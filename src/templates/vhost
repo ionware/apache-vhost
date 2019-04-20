@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+        DocumentRoot __document_root__
+        ServerName __domain__
+        ServerAlias __domain_alias__
+
+        <Directory __document_root__>
+                Options All
+                AllowOverride All
+                Require all Granted
+        </Directory>
+</VirtualHost>
