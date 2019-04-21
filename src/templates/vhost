@@ -1,9 +1,9 @@
 <VirtualHost *:80>
-        DocumentRoot __document_root__
-        ServerName __domain__
-        ServerAlias __domain_alias__
+        DocumentRoot __dR__
+        ServerName __domain_name__
+        ServerAlias www.__domain_name__
 
-        <Directory __document_root__>
+        <Directory __dR__>
                 Options All
                 AllowOverride All
                 Require all Granted
