@@ -3,7 +3,7 @@ const fs = require('fs');
 const shell = require('shelljs');
 
 // Read the template for virtual host configuration file.
-const virtualConf = fs.readFileSync(path.join('src', 'templates', 'vhost'))
+const virtualConf = fs.readFileSync(path.join(__dirname, 'templates', 'vhost'))
     .toString();
 /**
  * Create configuration file by replacing template markers.
