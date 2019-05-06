@@ -4,8 +4,7 @@ const shell = require('shelljs');
 
 // Read the template for virtual host configuration file.
 const virtualConf = fs.readFileSync(path.join('src', 'templates', 'vhost'))
-  .toString();
-
+    .toString();
 /**
  * Create configuration file by replacing template markers.
  * @param domain
@@ -15,10 +14,9 @@ const virtualConf = fs.readFileSync(path.join('src', 'templates', 'vhost'))
 function getConfString(domain, documentRoot) {
     return virtualConf.split('\n\r')
         .map(ln => ln.replace(/__domain_name__/g, domain)
-        .replace(/__dR__/g, documentRoot))
+            .replace(/__dR__/g, documentRoot))
         .join('\r\n');
 }
-
 /**
  * Check if the configuration file exist in Apache dir or not.
  * @param fileName String
@@ -27,7 +25,6 @@ function getConfString(domain, documentRoot) {
 function assertConfExists (fileName) {
     return fs.existsSync(`/etc/apache2/sites-available/${fileName}.conf`)
 }
-
 /**
  * Creates configuration file within Apache Sites-available folder.
  * @param name
@@ -45,33 +42,36 @@ function createConf (name, confString) {
         confString,
     );
 }
-
 /**
  * Creates domain name within /etc/hosts file.
  * @param domain
  */
 function createDomain(domain) {
+    // We want to strip www. from domain names.
+    if (domain.slice(0, 3) == 'www')
+        domain = domain.slice(4);
     const hosts = path.join('/etc/hosts');
     const fd = fs.openSync(hosts, 'a');
-    fs.writeSync(fd, domain.trim() + "\r\n");
+    fs.writeSync(fd, `127.0.0.1\t${domain.trim()}\r\n`);
 }
 
-function create(domain, confString, fileName) {
+/**
+ * Run activation and clean up commands.
+ * @param fileName
+ */
+function runCommand(fileName) {
     const commands = [
         `sudo a2ensite ${fileName}.conf`,
         `sudo systemctl reload apache2`
     ];
-    // We want to strip www. from domain names.
-    if (domain.slice(0, 3) == 'www')
-        domain = domain.slice(4);
-    createConf(fileName, confString);
-    createDomain(domain);
     for (let command of commands) {
         shell.exec(command);
     }
 }
 
 module.exports = {
-  getConfString,
-  create,
+    getConfString,
+    createConf,
+    createDomain,
+    runCommand,
 };
