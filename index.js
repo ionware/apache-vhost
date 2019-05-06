@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const program = require('commander');
 const inquirer = require('inquirer');
 const app = require('./src/app');
@@ -34,12 +35,12 @@ if (interactive) {
     inquirer.prompt(prompt).then(({ domain, documentRoot, fileName }) => {
         run(domain, documentRoot, fileName);
     });
-}
-console.log(fileName, domain, documentRoot);
-if (domain && documentRoot && fileName) {
-    run(domain, documentRoot, fileName);
 } else {
-    console.error("❌️  Insufficient arguments passed.");
-    process.exit(1);
+    if (domain && documentRoot && fileName) {
+        run(domain, documentRoot, fileName);
+    } else {
+        console.error("❌️  Insufficient arguments passed.");
+        process.exit(1);
+    }
 }
 

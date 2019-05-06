@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/ionware/apache-vhost.git"
   },
+  "bin": {
+    "apache-vhost": "./index.js"
+  },
   "keywords": [
     "Apache",
     "Virtal",

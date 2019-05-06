@@ -23,7 +23,7 @@ function getConfString(domain, documentRoot) {
  * @returns {boolean}
  */
 function assertConfExists (fileName) {
-    return fs.existsSync(`/etc/apache2/sites-available/${fileName}.conf`)
+    return fs.existsSync(fileName)
 }
 /**
  * Creates configuration file within Apache Sites-available folder.
