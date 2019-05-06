@@ -17,11 +17,11 @@ if (interactive) {
     inquirer.prompt(prompt).then(({ domain, documentRoot, fileName }) => {
         const confString = app.getConfString(domain, documentRoot);
         app.createConf(fileName, confString);
-        console.log("✔️ Created configuration file.");
+        console.log("✔️  Created configuration file.");
         app.createDomain(domain);
-        console.log("✔️ Domain name created.");
-        console.log("⚙️ Running Clean up commands");
+        console.log("✔️  Domain name created.");
+        console.log("⚙️  Running Clean up commands");
         app.runCommand(fileName);
-        console.log("✔️ Apache Virtual Host created successfully!!");
+        console.log("✔️  Apache Virtual Host created successfully!!");
     });
 }

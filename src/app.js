@@ -34,7 +34,7 @@ function createConf (name, confString) {
     const fileName = path.join('/etc/apache2/sites-available', `${name}.conf`);
     // Check if configuration file exists before proceeding.
     if (assertConfExists(fileName)) {
-        console.error("");
+        console.error("✖️  Configuration file already exists!!");
         process.exit(1);
     }
     fs.writeFileSync(
