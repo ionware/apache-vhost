@@ -1,6 +1,6 @@
 {
   "name": "apache-vhost",
-  "version": "2.0.0",
+  "version": "0.0.0",
   "description": "Automation tool for creating Apache virtual hosting configuration and domain name in *NIX based operating system.",
   "main": "index.js",
   "scripts": {
