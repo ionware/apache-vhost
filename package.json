@@ -1,0 +1,34 @@
+{
+  "name": "apache-vhost",
+  "version": "0.0.0",
+  "description": "Automation tool for creating Apache virtual hosting configuration and domain name in *NIX based operating system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionware/apache-vhost.git"
+  },
+  "keywords": [
+    "Apache",
+    "Virtal",
+    "Domain",
+    "Virtal",
+    "Host",
+    "Automation",
+    "Configure"
+  ],
+  "author": "Adedeji Stephen <ionwarez@gmail.com> (https://github.com/ionware)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ionware/apache-vhost/issues"
+  },
+  "homepage": "https://github.com/ionware/apache-vhost#readme",
+  "dependencies": {
+    "commander": "2.20.0",
+    "inquirer": "6.3.1",
+    "shelljs": "0.8.3"
+  },
+  "devDependencies": {}
+}
